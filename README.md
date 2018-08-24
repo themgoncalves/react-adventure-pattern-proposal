@@ -120,7 +120,7 @@
 
 ### Optional file name prefix
 
-  In some cases when you follow the [`Modular Structure`](#modular-structure-designing-modules) and end up with **just a few files** inside the _subdomain directory_, you can choose to use a file prefix instead of placing then inside a section folder. This **might increase your structure readability and file search capability**.
+  In some cases when you follow the [`Modular Structure`](#modular-structure-designing-modules) and end up with **just a few files** inside the _subdomain directory_, you can choose to use a file prefix instead of placing then inside a subdomain folder. This **might increase your structure readability and file search capability**.
 
   For that, you should follow the following pattern: `[subdomain].[fileName].[ext]`
 
