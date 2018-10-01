@@ -1,6 +1,8 @@
 # [React] Adventure Design Proposal
 
-> A **high-ending modular architecture** with **screen centric development**. Grow big, keep it small.
+> A **high-ending modular architecture** with **screen centric development** for building spa applications with clean separation of concerns, high cohesion and maintainability. 
+>
+> **Grow big, keep smart**.
 
 ## Table of Contents
 
@@ -86,7 +88,7 @@
   By all those reason, we came up with this approach, which give us the ability to:
 
   - Establish a `development contract` between developers.
-  - Ensure the `application scalability`.
+  - Ensure `application scalability`.
   - Provide a `readable` and `searchable` structure.
   - Make every `component, function or screen self-evident`.
   - `Implement new tools` and `safely delete` legacy/unused with the **minimum effort** and **greater confidence**.
@@ -234,11 +236,14 @@
 
 ## Elements
 
+  The `design proposal` is composed by **6 basic `elements`**: `components`, `enhancers`, `screen`, `state`, `styles` and `utils`.
+
+  
 ### Components
 
   The _`Components`_ represents small units of the UI (User Interface) and are presentational; it should  be **open for extension** and have only **one reason (responsibility) to exists**. You can also define *reason or responsibility* as a *reason for change*.
 
-  It **`should be an autonomous part of your application`**, .
+  It **`should be an autonomous part of your application`**.
 
   > **Component example**: Button, Avatar, List.
 
@@ -640,7 +645,7 @@
 ### Advantages
 
   - **Simultaneous development**: Allow multiple developers to work simultaneously in the [Elements](#elements).
-  - **Hight cohesion**: Adventure Design Proposal allow logical grouping of the related structure.
+  - **High cohesion**: Adventure Design Proposal allow logical grouping of the related structure.
   - **Low coupling**: The [Modular Structure](#modular-structure-designing-modules) component's can be replaced with alternative implementations that provide the same services.
   - **Easy modification**: Due to de separation of concerns, create, update or delete code/files can be done with the minimum effort and greater confidence.
   - **Maximum Universality for the Components**: The [UI Component Development Principle](#ui-component-development-principle) provides a road-map to ensure that we achieve the maximum level of reusability in any type of context with zero dependencies.
