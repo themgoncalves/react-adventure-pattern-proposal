@@ -23,6 +23,7 @@
     - [Enhancers](#enhancers)
     - [Screen](#screen)
       - [Layout](#layout)
+      - [Shared](#shared)
     - [State](#state)
     - [Styles](#styles)
     - [Utils](#utils)
@@ -286,6 +287,18 @@
   > **Note**: In case you have a multiple layouts system, the [Modular Structure](#modular-structure-designing-modules) allows you to have a nice and concise structure by using the `subdomain` directory. 
   > 
   > E.g. `Screens/Layouts/Errors`, `Screens/Layouts/Account`, `Screens/Layouts/Default`, so on.
+
+  Connects with: [Components](#components), [Enhancers](#enhancers), [State](#state) and [Screen](#screen).
+
+  <br />
+
+#### Shared
+  
+  It is common to find _designs specifications_ that shares the same visual structure (UI) and logic across others `Screens`,
+  such as _breadcrumbs_, _image sliders_ and _product cards_.
+  
+  For that reason the _`Shared`_ folder is used to centralized those commons UI (User Interface) and its logic into a
+  **single and shareable endpoint**, avoiding then, unnecessary logic and interface duplications.
 
   Connects with: [Components](#components), [Enhancers](#enhancers), [State](#state) and [Screen](#screen).
 
