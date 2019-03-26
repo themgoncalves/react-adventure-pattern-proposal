@@ -29,6 +29,9 @@
     - [Utils](#utils)
   - [Interactions](#interactions)
     - [Overview](#overview)
+  - [Design Proposal Directory Tree](#design-proposal-directory-tree)
+    - [Basic Elements Composition](##basic-elements-composition)
+    - [Real World Implementation](#real-world-implementation)
   - [The Modular Approach](#the-modular-approach)
     - [Basic Hierarchy Principle](#basic-hierarchy-principle)
       - [Example](#example)
@@ -358,6 +361,147 @@
 
   <img src="./assets/diagram-of-interactions.svg" alt="Diagram of Interactions" />
 
+
+  <br />
+
+  **[⬆ back to top](#table-of-contents)**
+
+  <br />
+
+
+## Design Proposal Directory Tree
+
+### Basic Elements Composition
+
+  The following `directory tree` represents `basic elements` hierarchy approached in the past section.
+
+  ```bash
+  .
+  └── source
+      ├── components
+      ├── enhancers
+      ├── screen
+      │   ├── layout
+      │   └── shared
+      ├── state
+      ├── styles
+      └── utils
+  ```
+
+  <br />
+
+### Real World Implementation
+
+  ```bash
+  .
+  ├── configurations
+  │   ├── jest
+  │   └── webpack
+  │       ├── config.dev.js
+  │       ├── config.prod.js
+  │       └── config.rules.js
+  └── source
+      ├── components
+      │   ├── index.js
+      │   └── v1
+      │       ├── breadcrumbs
+      │       │   ├── breadcrumbs.jsx
+      │       │   ├── breadcrumbs.scss
+      │       │   └── index.js
+      │       ├── button
+      │       │   ├── button.jsx
+      │       │   ├── button.scss
+      │       │   └── index.js
+      │       ├── dropdown
+      │       │       ├── index.js
+      │       │       ├── dropdown.jsx
+      │       │       ├── divider.jsx
+      │       │       ├── divider.styles.js
+      │       │       └── styles.js
+      │       ├── index.js
+      │       └── modal
+      │           ├── body
+      │           │   ├── body.jsx
+      │           │   └── index.js
+      │           ├── footer
+      │           │   ├── footer.jsx
+      │           │   └── index.js
+      │           ├── header
+      │           │   ├── header.jsx
+      │           │   ├── header.scss
+      │           │   └── index.js
+      │           └── index.js
+      ├── enhancers
+      │   ├── index.js
+      │   └── withTransition
+      │       ├── index.js
+      │       ├── withTransition.container.js
+      │       └── withTransition.jsx
+      ├── screen
+      │   ├── error
+      │   │   ├── 404
+      │   │   │   ├── 404.jsx
+      │   │   │   ├── 404.scss
+      │   │   │   └── index.js
+      │   │   ├── 500
+      │   │   │   ├── 500.jsx
+      │   │   │   ├── 500.scss
+      │   │   │   └── index.js
+      │   │   ├── error.graphql
+      │   │   └── index.js
+      │   ├── home
+      │   │   ├── home.container.js
+      │   │   ├── home.graphql
+      │   │   ├── home.jsx
+      │   │   ├── home.scss
+      │   │   └── index.js
+      │   ├── index.js
+      │   ├── layout
+      │   │   ├── default
+      │   │   │   ├── default.graphql
+      │   │   │   ├── default.jsx
+      │   │   │   ├── default.scss
+      │   │   │   └── index.js
+      │   │   ├── errors
+      │   │   │   ├── errors.jsx
+      │   │   │   ├── errors.scss
+      │   │   │   └── index.js
+      │   │   ├── index.js
+      │   │   └── layout.jsx
+      │   ├── root
+      │   │   ├── index.js
+      │   │   ├── root.graphql
+      │   │   ├── root.jsx
+      │   │   └── routes.js
+      │   └── shared
+      │       └── breadcrumbs
+      │           ├── breadcrumbs.container.js
+      │           ├── breadcrumbs.graphql
+      │           └── breadcrumbs.jsx
+      ├── state
+      │   ├── actions
+      │   │   ├── food.js
+      │   │   ├── index.js
+      │   │   └── types.js
+      │   ├── reducers
+      │   │   └── foo.js
+      │   ├── saga
+      │   │   ├── index.js
+      │   │   └── saga.js
+      │   ├── selectors
+      │   │   └── getFoo.js
+      │   └── store
+      │       ├── config.dev.js
+      │       ├── config.prod.js
+      │       └── index.js
+      ├── styles
+      │   ├── base.scss
+      │   ├── grid.scss
+      │   └── variables.scss
+      └── utils
+          ├── flatten.js
+          └── renderClass.js
+  ```
 
   <br />
 
