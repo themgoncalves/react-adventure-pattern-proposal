@@ -67,7 +67,7 @@
 
   And the result of that? A real mess over time.
 
-  For this reason we created the `Adventure Design Proposal` in order to provide a **understandable, workable, maintainable and scalable environment over time**.
+  For this reason we created the `Adventure Design Proposal` in order to provide a **understandable, reliable, maintainable and scalable environment over time**.
 
   <br />
 
@@ -93,6 +93,7 @@
 
   - Establish a `development contract` between developers.
   - Ensure `application scalability`.
+  - Guarantee the `operability`, `simplicity` and `evolvability`.
   - Provide a `readable` and `searchable` structure.
   - Make every `component, function or screen self-evident`.
   - `Implement new tools` and `safely delete` legacy/unused with the **minimum effort** and **greater confidence**.
@@ -804,9 +805,8 @@
   - **Simultaneous development**: Allow multiple developers to work simultaneously in the [Elements](#elements).
   - **High cohesion**: Adventure Design Proposal allow logical grouping of the related structure.
   - **Low coupling**: The [Modular Structure](#modular-structure-designing-modules) component's can be replaced with alternative implementations that provide the same services.
-  - **Easy modification**: Due to de separation of concerns, create, update or delete code/files can be done with the minimum effort and greater confidence.
+  - **Maintainability**: Due to separation of concerns, create, update or delete code/files can be done with the minimum effort and greater confidence, ensuring then the `operability`, `simplicity` and `evolvability`.
   - **Maximum Universality for the Components**: The [UI Component Development Principle](#ui-component-development-principle) provides a road-map to ensure that we achieve the maximum level of reusability in any type of context with zero dependencies.
-
 
   <br />
 
