@@ -1,49 +1,51 @@
-# [React] Adventure Design Proposal
+# Adventure Design Proposal
 
-> A **high-ending modular architecture** with **screen centric development** for building spa applications with clean separation of concerns, high cohesion and maintainability. 
+> A **high-ending modular architecture** with **screen centric development** for building Single Page Applications with clean separation of concerns, high cohesion and maintainability. 
 >
 > **Grow big, keep smart**.
 
 ## Table of Contents
 
-- [[React] Adventure Design Proposal](#react-adventure-design-proposal)
+- [Adventure Design Proposal](#adventure-design-proposal)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Why Adventure as a proposal name?](#why-adventure-as-a-proposal-name)
   - [Goal](#goal)
   - [Naming Convention](#naming-convention)
-    - [Extensions](#extensions)
+    - [File extension](#file-extension)
     - [File name](#file-name)
     - [Optional file name prefix](#optional-file-name-prefix)
     - [Component Naming](#component-naming)
     - [Reference Naming](#reference-naming)
     - [Overview](#overview)
-  - [Elements](#elements)
+  - [Architecture Elements](#architecture-elements)
     - [Components](#components)
     - [Enhancers](#enhancers)
-    - [Screen](#screen)
+    - [Screens](#screens)
+      - [Compositions](#compositions)
       - [Layout](#layout)
       - [Shared](#shared)
     - [State](#state)
+    - [Services](#services)
     - [Styles](#styles)
     - [Utils](#utils)
   - [Interactions](#interactions)
-    - [Overview](#overview)
+    - [Overview](#overview-1)
   - [Design Proposal Directory Tree](#design-proposal-directory-tree)
-    - [Basic Elements Composition](##basic-elements-composition)
+    - [Basic Elements Composition](#basic-elements-composition)
     - [Real World Implementation](#real-world-implementation)
   - [The Modular Approach](#the-modular-approach)
     - [Basic Hierarchy Principle](#basic-hierarchy-principle)
       - [Example](#example)
-      - [Overview](#overview)
+      - [Overview](#overview-2)
     - [Modular Structure: Designing Modules](#modular-structure-designing-modules)
-      - [Example](#example)
+      - [Example](#example-1)
   - [UI Component: Development Principle](#ui-component-development-principle)
     - [The right level of abstraction](#the-right-level-of-abstraction)
-      - [Example](#example)
+      - [Example](#example-2)
     - [The development process](#the-development-process)
       - [Development flow diagram](#development-flow-diagram)
-  - [Advantages & Disadvantages](#advantages-disadvantages)
+  - [Advantages & Disadvantages](#advantages--disadvantages)
     - [Advantages](#advantages)
     - [Disadvantages](#disadvantages)
   - [Resources](#resources)
@@ -59,13 +61,13 @@
 
 ## Introduction
 
-  **React.js** introduced a new way to create _modern web applications_ by giving the developers power to code in a very concise and declarative way, besides its short learning curve.
+  **React** introduced a new way to create _modern web applications_ by giving the developers power to code in a very concise and declarative way, on top of a short learning curve.
 
   Due to its popularity over the years, you can find with easy many articles about [code pattern](https://www.google.com/search?q=react+code+pattern+&oq=react+code+pattern) and even greats [JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react) to follow, **and it's great!**
 
-  But when it comes to _project design_, **there's a real struggle to find or create one that provides scalability and enforces a development contract between developers**, after all, whenever a new developer joins the team, another structure pattern might happen and will happen if he/she  does not understand its project structure.
+  But when it comes to _project design_, **there's a real struggle to find or create one that provides scalability, maintainability and enforces a development contract between developers**, after all, whenever a new developer joins the team, another structure pattern might happen and will happen if he/she  does not understand its project structure.
 
-  And the result of that? A real mess over time.
+  The result of that? A real mess over time.
 
   For this reason we created the `Adventure Design Proposal` in order to provide a **understandable, reliable, maintainable and scalable environment over time**.
 
@@ -77,7 +79,7 @@
 
 ## Why Adventure as a proposal name?
 
-  Because the whole journey until this point have been an adventure and we would like to the adopter have the same adventure, focusing more on coding quality and less on stressing matters.
+  Because the whole journey until this point have been an adventure, and we would like to the adopter have the same adventure, focusing more on coding quality and less on stressing matters.
 
   <br />
 
@@ -95,8 +97,8 @@
   - Ensure `application scalability`.
   - Guarantee the `operability`, `simplicity` and `evolvability`.
   - Provide a `readable` and `searchable` structure.
-  - Make every `component, function or screen self-evident`.
-  - `Implement new tools` and `safely delete` legacy/unused with the **minimum effort** and **greater confidence**.
+  - Make every `element self-evident` and `self-explanatory`.
+  - `Upgrade or Implement new tools` and `safely delete` legacy/unused with the **minimum effort** and **greater confidence**.
   - To `easily create or update` different part of the application in the shortest possible time.
 
 
@@ -113,15 +115,16 @@
 
 ## Naming Convention
 
-### Extensions
+### File extension
 
-  Use `.jsx` for React components, otherwise use `.js`.
+  Use `.jsx` when implementing `JSX Expression`, otherwise use `.js`.
 
 <br />
 
 ### File name
-  All file name should be written in `Lower Camel Case`.
-  E.g. `profile.jsx`, `modalHeader.jsx`.
+
+  All file name should be written in `Kabab Case`.
+  E.g. `profile.jsx`, `modal-header.jsx`, `authentication.js`.
 
 <br />
 
@@ -129,7 +132,7 @@
 
   In some cases when you follow the [`Modular Structure`](#modular-structure-designing-modules) and end up with **just a few files** inside the _subdomain directory_, you can choose to use a file prefix instead of placing then inside a subdomain folder. This **might increase your structure readability and file search capability**.
 
-  For that, you should follow the following pattern: `[subdomain].[fileName].[ext]`
+  For that, you should follow the following pattern: `[file-name].[subdomain].[ext]`
 
   Example:
     
@@ -138,7 +141,7 @@
   // you can turn this tree
   configurations
   ├── webpack
-  │   ├── configuration // this is the Modular Structure 'subdomain'
+  │   ├── configuration        // this is the Modular Structure 'subdomain'
   │   │   ├── development.js
   │   │   ├── production.js
   │   │   └── tests.js
@@ -239,9 +242,9 @@
 
   <br />
 
-## Elements
+## Architecture Elements
 
-  The `design proposal` is composed by **6 basic `elements`**: `components`, `enhancers`, `screen`, `state`, `styles` and `utils`.
+  THis `design proposal` is composed by **7 root `elements`**: `components`, `enhancers`, `screens`, `state`, `services`, `styles` and `utils`.
 
   
 ### Components
@@ -258,23 +261,30 @@
 
 ### Enhancers
 
-  _`Enhancers`_ are functions that receives  class/function/method/property and **return given element intensified/improved**.
+  _`Enhancers`_ are functions that receives _class/function/method/property_ and **return given element intensified/improved**.
 
-  > **Enhancers example**: Hight Order Components and Decorators.
+  > **Enhancers example**: Hooks, High Order Components and Decorators.
 
-  Connects with: [Components](#screen) and [State](#state).
+  Connects with: [Screen](#screens) and [State](#state).
 
   <br />
 
-### Screen
+### Screens
 
-  _`Screen`_ is the **central part of your application**, it is responsible to `compose` the page with _Components_, `consume data` from State and handle all the user actions.
+  _`Screens`_ is the **central part of your application**, it is responsible to `compose` the page with _Components_, `consume data` from State and handle all the user actions.
 
   It's the `component target` of your routing system.
 
   > **Screen example**: Home, Contact, About Us.
 
-  Connects with: [Components](#components), [Enhancers](#enhancers) and [State](#state).
+  Connects with: Global Application.
+
+#### Compositions
+  
+  TBD
+
+  <br />
+
 
 #### Layout
 
@@ -282,17 +292,15 @@
 
   For that reason the _`Layout Screen`_ is used to centralized those commons UI (User Interface) and its logic into a **single and reusable screen**.
 
-  _`Layout`_, although is an optional _`Screen`_, **we strongly recommend you to have it**. It might **shorten the [`reconciliation`](https://reactjs.org/docs/reconciliation.html) process time**  when working with a routing system, due to the logical abstraction adopted.
+  _`Layout`_, although is an optional _`Screens`_, **we strongly recommend you to have it**. It might **shorten the [`reconciliation`](https://reactjs.org/docs/reconciliation.html) process time**  when working with a routing system, due to the logical abstraction adopted.
 
 
   > **Layout example**:
   <img src="./assets/page-layout.png" alt="Page layout example" />
 
-  > **Note**: In case you have a multiple layouts system, the [Modular Structure](#modular-structure-designing-modules) allows you to have a nice and concise structure by using the `subdomain` directory. 
+  > **Note**: In case you have a multiple layout system, the [Modular Structure](#modular-structure-designing-modules) allows you to have a nice and concise structure by using the `subdomain` directory. 
   > 
   > E.g. `Screens/Layouts/Errors`, `Screens/Layouts/Account`, `Screens/Layouts/Default`, so on.
-
-  Connects with: [Components](#components), [Enhancers](#enhancers), [State](#state) and [Screen](#screen).
 
   <br />
 
@@ -304,8 +312,6 @@
   For that reason the _`Shared`_ folder is used to centralized those commons UI (User Interface) and its logic into a
   **single and shareable endpoint**, avoiding then, unnecessary logic and interface duplications.
 
-  Connects with: [Components](#components), [Enhancers](#enhancers), [State](#state) and [Screen](#screen).
-
   <br />
 
 ### State
@@ -316,6 +322,16 @@
   *Tip: [re-ducks proposal](https://github.com/alexnm/re-ducks) - a modular redux approach*.
 
   Connects with: no one.
+
+  <br />
+
+### Services
+
+  _`Service`_ is **code block** that performs **automated tasks or processes**, **responds** to hardware events, or **listens** and **request** data.
+
+  > **Services example**: [Apollo GraphQL Client](https://www.apollographql.com/docs/react/), [OpenID Auth](https://openid.net/), Error Tacking tools and so on.
+
+  Connects with: [Screen](#screens).
 
   <br />
 
@@ -343,12 +359,13 @@
 
 ## Interactions
 
-  - **The Components** are responsible to the UI (User Interface) of your application. It receives inputs directly from the Screen or from the Enhancers. 
-  - **The Screen** is the presentation of a component composition and is interconnected with the State; it is responsible to consume the State and to handle the user actions.
-  - **The State** is accountable for the application's data flow core. It performs data manipulation according to your business logic, providing normalized data and handling actions for the Screen or for the Enhancers.
-  - **The Enhancers**, in its turn,  represents a improvement of a given Screen, intensifying its logic. It also can be composed of Components and/or be consumer of the State.
-  - **The Styles** is responsible to manage the global styles of your application.
-  - **The Utils**, as well as the Styles, is responsible for the global code snippets.
+  - **Components** are responsible to the UI (User Interface) of your application. It receives inputs directly from the Screen or from the Enhancers. 
+  - **Screens** are the presentation of a component composition and is interconnected with the State; it is responsible to consume the State and to handle the user actions.
+  - **State** is accountable for the application's data flow core. It performs data manipulation according to your business logic, providing normalized data and handling actions for the Screen or for the Enhancers.
+  - **Enhancers**, in its turn,  represents an improvement of a given Screen, intensifying its logic. It also can be composed of Components and/or be consumer of the State.
+  - **Styles** are responsible to manage the global styles of your application
+  - **Services** are responsible to manage automated tasks or processes, responds to hardware events or even listens and request data.
+  - **Utils**, as well as the Styles, is responsible for the global code snippets.
 
   <br />
 
@@ -382,9 +399,12 @@
       ├── components
       ├── enhancers
       ├── screen
+      │   ├── [my-screen]
+      │   │   └── compositions
       │   ├── layout
       │   └── shared
       ├── state
+      ├── services
       ├── styles
       └── utils
   ```
@@ -403,7 +423,6 @@
   │       └── config.rules.js
   └── source
       ├── components
-      │   ├── index.js
       │   └── v1
       │       ├── breadcrumbs
       │       │   ├── breadcrumbs.jsx
@@ -433,24 +452,29 @@
       │           │   └── index.js
       │           └── index.js
       ├── enhancers
-      │   ├── index.js
-      │   └── withTransition
+      │   └── with-transition
       │       ├── index.js
-      │       ├── withTransition.container.js
-      │       └── withTransition.jsx
+      │       ├── with-transition.i18n.js
+      │       └── with-transition.jsx
       ├── screen
       │   ├── error
+      │   │   ├── compositions
+      │   │   │   ├── interactive-message.scss
+      │   │   │   └── interactive-message.jsx
       │   │   ├── 404
       │   │   │   ├── 404.jsx
       │   │   │   ├── 404.scss
+      │   │   │   ├── 404.i18n.js
       │   │   │   └── index.js
       │   │   ├── 500
       │   │   │   ├── 500.jsx
       │   │   │   ├── 500.scss
+      │   │   │   ├── 500.i18n.js
       │   │   │   └── index.js
       │   │   ├── error.graphql
       │   │   └── index.js
       │   ├── home
+      │   │   ├── home.i18n.js
       │   │   ├── home.container.js
       │   │   ├── home.graphql
       │   │   ├── home.jsx
@@ -501,7 +525,8 @@
       │   └── variables.scss
       └── utils
           ├── flatten.js
-          └── renderClass.js
+          ├── group-by.js
+          └── render-class.js
   ```
 
   <br />
@@ -586,7 +611,7 @@
 
   ```jsx
   components                  // category
-  ├── abTestBlackFriday       // versioning
+  ├── ab-test-black-friday    // versioning
   │   ├── [modular component]
   │   ├── [modular component]
   │   ├── [modular component]
@@ -877,7 +902,7 @@
 
   MIT License
 
-  Copyright (c) 2018 Marcos Gonçalves
+  Copyright (c) 2020 Marcos Gonçalves
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
